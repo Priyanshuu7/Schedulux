@@ -11,7 +11,6 @@ export function Navbar() {
         Saas <span className="text-blue-500">App</span>
       </h4>
       </Link>
-      
     </div>
   );
 }
