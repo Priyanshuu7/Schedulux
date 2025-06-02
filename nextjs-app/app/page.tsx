@@ -8,7 +8,6 @@ export default async function Home() {
 
     if(session?.user){
       return redirect("/dashboard")
-
     }
   
   return (
