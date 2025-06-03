@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useFormStatus } from "react-dom";
 import GoogleLogo from "@/public/google.svg";
 import GithubLogo from "@/public/github.svg";
+import { cn } from "@/lib/utils";
 
 interface iAppProps {
   text: string;
@@ -20,6 +21,28 @@ interface iAppProps {
 
   className?: string;
 }
+
+export function SubmitButton({ text, variant, className }: iAppProps) {
+    const { pending } = useFormStatus();
+  
+    return (
+      <>
+        {pending ? (
+          <Button disabled variant="outline" className={cn("w-fit", className)}>
+            <Loader2 className="size-4 mr-2 animate-spin" /> Please wait
+          </Button>
+        ) : (
+          <Button
+            variant={variant}
+            type="submit"
+            className={cn("w-fit", className)}
+          >
+            {text}
+          </Button>
+        )}
+      </>
+    );
+  }
 
 export function GoogleAuthButton() {
     const { pending } = useFormStatus();
