@@ -40,8 +40,6 @@ export async function onBoardingAction( prevState:any, formdata:FormData) {
             name : submission.value.fullName
         }
     }) 
-
-    return redirect("/onboarding/grant-id")
-
     
+    return redirect("/onboarding/grant-id")
 }
