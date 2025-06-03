@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   const codeExchangePayload = {
     clientSecret: nylasConfig.apiKey,
     clientId: nylasConfig.clientId as string,
-    redirectUri: nylasConfig.callbackUri,
+    redirectUri: nylasConfig.redirectUri,
     code,
   };
 

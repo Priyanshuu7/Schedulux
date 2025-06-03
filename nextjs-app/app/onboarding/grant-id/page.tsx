@@ -36,11 +36,8 @@ import { CalendarCheck2 } from "lucide-react";
                 <Link href = "/api/auth ">
                 <CalendarCheck2 className="size- mr-2"/>
                 Connect Your Calender Account
-                
                 </Link>
-                
             </Button>
-          
           </CardContent>
         </Card>
       </div>

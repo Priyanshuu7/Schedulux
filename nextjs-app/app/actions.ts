@@ -41,7 +41,7 @@ export async function onBoardingAction( prevState:any, formdata:FormData) {
         }
     }) 
 
-    return redirect("/dashboard")
+    return redirect("/onboarding/grant-id")
 
     
 }
