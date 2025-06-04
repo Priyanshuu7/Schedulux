@@ -34,7 +34,7 @@ export const dashboardLinks = [
     },
     {
       id: 3,
-      name: "Settings",
+      name: "Settings", 
       href: "/dashboard/settings",
       icon: Settings,
     },
