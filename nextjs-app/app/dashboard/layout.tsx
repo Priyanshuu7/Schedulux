@@ -31,13 +31,9 @@ async function getData(userId:string) {
     if(!data?.grantId){
         return redirect("/onboarding/grant-id")
     }
-
     return data ;
     
 }
-
-
-
   
 export default async function DashboardLayout({ children }: { children: ReactNode }) {
 

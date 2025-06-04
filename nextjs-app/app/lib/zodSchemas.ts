@@ -55,3 +55,10 @@ export function onboardingSchemaValidation(options?: {
     });
   }
   
+
+  export const SettingSchema = z.object({
+
+    fullName : z.string().min(3).max(12),
+    porfileImage : z.string()
+
+  })
