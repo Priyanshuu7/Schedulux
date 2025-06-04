@@ -25,12 +25,10 @@ export async function onBoardingAction( prevState:any, formdata:FormData) {
         async: true,
     });
 
-  
    if (submission.status !== "success"){
      return submission.reply()
 
    }
-
     const data = await prisma.user.update({
         where :{
             id : session.user?.id,

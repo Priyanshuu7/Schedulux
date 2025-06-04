@@ -1,11 +1,11 @@
 import prisma from "@/app/lib/db";
 import  requireUser  from "@/app/lib/hooks";
 import { nylas, nylasConfig } from "@/app/lib/nylas";
-
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
+
   console.log("Received callback from Nylas");
   const session = await requireUser();
   const url = new URL(req.url as string);

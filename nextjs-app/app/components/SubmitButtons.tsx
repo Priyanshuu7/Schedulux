@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useFormStatus } from "react-dom";
 import GoogleLogo from "@/public/google.svg";
 import GithubLogo from "@/public/github.svg";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 interface iAppProps {
   text: string;

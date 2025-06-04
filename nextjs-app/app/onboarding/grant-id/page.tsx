@@ -26,7 +26,7 @@ import { CalendarCheck2 } from "lucide-react";
               src={VideoGif}
               alt="Calendar connection demo"
               className="mx-auto rounded-md"
-              width={260} // or adjust this to the actual image width you want
+              width={260} 
               height={180}
             /> 
           </CardHeader>
