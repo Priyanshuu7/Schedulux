@@ -18,6 +18,9 @@ import { parseWithZod } from "@conform-to/zod";
 import { SettingSchema } from "../lib/zodSchemas";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { UploadDropzone } from "../lib/uploadthing";
+import { toast } from "sonner";
+
 
 interface SettingFormProps {
   fullName: string;
@@ -81,6 +84,8 @@ export function SettingForm({
           </div>
           <div className="grid grid-y-5">
             <Label>Profile Image</Label>
+
+            <input type="hidden" name={fields.porfileImage.name } key={fields.porfileImage.key}  value={currentImage}/>
             <br />
             {currentImage ? (
               <div className="relative size-16">
@@ -100,8 +105,23 @@ export function SettingForm({
                 </Button>
               </div>
             ) : (
-              <span>NO IMAGE</span>
+                <UploadDropzone
+                endpoint="imageUploader"
+                appearance={{
+                  container: "border-muted",
+                }}
+                onClientUploadComplete={(res) => {
+                    setCurrentImage(res[0].ufsUrl);
+                  toast.success("Profile image uploaded");
+                }}
+                onUploadError={(error) => {
+                  toast.error(error.message);
+                }}
+              />
             )}
+            <p className="text-red-600 text-sm">
+                {fields.porfileImage.errors}
+            </p>
           </div>
         </CardContent>
         <CardFooter className="py-4">
