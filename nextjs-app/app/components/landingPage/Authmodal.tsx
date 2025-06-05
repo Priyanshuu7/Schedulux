@@ -1,10 +1,11 @@
 import {Button} from "@/components/ui/button";
 import {Dialog, DialogContent, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {DialogTrigger} from "@/components/ui/dialog";
-import Logo from "@/public/logo.png";
+
 import Image from "next/image";
-import {signIn} from "../lib/auth";
-import {GitHubAuthButton, GoogleAuthButton} from "./SubmitButtons";
+import { GitHubAuthButton, GoogleAuthButton } from "../SubmitButtons";
+import { signIn } from "@/app/lib/auth";
+
 export function AuthModal() {
     return (
         <Dialog>
@@ -15,10 +16,10 @@ export function AuthModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[360px]">
                 <DialogHeader className="flex flex-row justify-center items-center gap-2">
-                    <Image src={Logo} alt="Logo" className="size-10"/>
+               
                     <DialogTitle className="text-3xl font-semibold">
-                        Saas
-                        <span className="text-primary">App</span>
+                    Sche
+                        <span className="text-primary">dulux</span>
                     </DialogTitle>
                 </DialogHeader>
                 <div className="flex flex-col mt-5 gap-3">

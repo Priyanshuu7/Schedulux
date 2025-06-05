@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import Image from "next/image";
-import Logo from "@/public/logo.png";
+// import Logo from "@/public/logo.png";
 import { DasboardLinks } from "../components/DashboardLinks";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -49,9 +49,9 @@ const data = await getData(session.user?.id as string)
             {/* Logo and Branding */}
             <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
               <Link href="/" className="flex items-center gap-2 font-semibold">
-                <Image src={Logo} alt="Logo" className="size-8" />
+                {/* <Image src={Logo} alt="Logo" className="size-8" /> */}
                 <p className="text-2xl font-bold">
-                  Saas<span className="text-primary">App</span>
+                Sche<span className="text-primary">dulux</span>
                 </p>
               </Link>
             </div>
@@ -79,7 +79,7 @@ const data = await getData(session.user?.id as string)
               </SheetTrigger>
               <SheetContent side="left" className="flex flex-col">
                 <SheetTitle className="flex items-center gap-2 font-semibold py-4 px-8">
-                  <Image src={Logo} alt="Logo" className="size-8" />
+                  {/* <Image src={Logo} alt="Logo" className="size-8" /> */}
                   <p className="text-2xl font-bold">
                     Saas<span className="text-primary">App</span>
                   </p>
