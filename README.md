@@ -1,24 +1,24 @@
 
-# 🚀 Schedulux
+# Schedulux
 
 **Schedulux** is a blazing-fast meeting scheduling platform built with Next.js App Router and Nylas. It enables users to create event types, share booking links, and manage their availability—making it effortless for clients to book time with them.
 
-## 📸 Demo
+<!-- ## 📸 Demo
 
-👉 [Live Demo](https://schedulux.vercel.app) *(replace with your live link)*
+👉 [Live Demo](https://schedulux.vercel.app) *(replace with your live link)* -->
 
 ## 🔧 Features
 
-- 🧾 **Event Types** – Define custom meetings with titles, durations, and descriptions.
-- 📅 **Availability Management** – Set and update weekly availability.
-- 🔗 **Shareable Booking Links** – Each event type has a unique, client-friendly URL.
-- 🔐 **Auth.js Integration** – Login using Google or GitHub.
-- 🔌 **Nylas API Integration** – Real-time meeting creation and calendar syncing.
-- 🎥 **Auto Google Meet Links** – Meetings are created with video conferencing enabled.
-- 📈 **Fully Typed & Validated** – Uses Zod and `conform-to/zod` for validation.
-- 💨 **Fast & Secure** – Powered by Next.js App Router with server actions.
+-  **Event Types** – Define custom meetings with titles, durations, and descriptions.
+-  **Availability Management** – Set and update weekly availability.
+-  **Shareable Booking Links** – Each event type has a unique, client-friendly URL.
+-  **Auth.js Integration** – Login using Google or GitHub.
+-  **Nylas API Integration** – Real-time meeting creation and calendar syncing.
+-  **Auto Google Meet Links** – Meetings are created with video conferencing enabled.
+-  **Fully Typed & Validated** – Uses Zod and `conform-to/zod` for validation.
+-  **Fast & Secure** – Powered by Next.js App Router with server actions.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tech | Description |
 |------|-------------|
@@ -30,11 +30,11 @@
 | **Zod + conform-to/zod** | Form validation |
 | **PostgreSQL** | Database |
 
-## 🧑‍💻 Getting Started
+## 🧑 Getting Started
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/schedulux.git
+git clone https://github.com/Priyanshuu7/Schedulux
 cd schedulux
 ```
 
@@ -49,13 +49,25 @@ yarn install
 
 Create a `.env` file and add:
 ```env
-DATABASE_URL=postgresql://<your-db-url>
-NEXTAUTH_SECRET=<your-secret>
-NEXTAUTH_URL=http://localhost:3000
+AUTH_SECRET 
 
-NYLAS_CLIENT_ID=<your-nylas-client-id>
-NYLAS_CLIENT_SECRET=<your-nylas-client-secret>
-NYLAS_API_URL=https://api.nylas.com
+
+AUTH_GITHUB_ID
+AUTH_GITHUB_SECRET
+
+AUTH_GOOGLE_ID
+AUTH_GOOGLE_SECRET
+
+DATABASE_URL
+DIRECT_URL
+
+NYLAS_API_SECRET_KEY
+NYLAS_API_URI
+NYLAS_CLIENT_ID
+NEXT_PUBLIC_URL
+
+UPLOADTHING_TOKEN
+
 ```
 
 ### 4. Push Prisma schema & generate client
@@ -69,26 +81,6 @@ npx prisma generate
 npm run dev
 ```
 
-## 🗂️ Project Structure
-
-```
-app/
-  ├── actions/           // Server actions
-  ├── api/               // Auth + Nylas APIs
-  ├── dashboard/         // Authenticated user dashboard
-  ├── onboarding/        // Onboarding flow
-  ├── [username]/[slug]  // Booking page
-
-lib/
-  ├── db.ts              // Prisma Client
-  ├── hooks.ts           // requireUser() logic
-  ├── nylas.ts           // Nylas wrapper
-  ├── zodSchemas.ts      // Zod schema definitions
-
-components/
-  ├── ui/                // shadcn/ui components
-  ├── shared/            // Custom components
-```
 
 ## 🌐 Deployment
 
@@ -104,9 +96,6 @@ This project is ready for **Vercel** deployment.
 Made with ❤️ for developers who hate back-and-forth scheduling.
 
 - [Twitter](https://twitter.com/yourhandle)
-- [LinkedIn](https://linkedin.com/in/yourhandle)
-- [Portfolio](https://yourwebsite.com)
+- [LinkedIn](https://www.linkedin.com/in/priyanshurajak/)
+- [Portfolio](https://www.priyanshurajak.tech/)
 
-## 📄 License
-
-MIT
