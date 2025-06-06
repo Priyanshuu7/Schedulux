@@ -57,7 +57,6 @@ export async function CreateEventTypeAction(
   return redirect("/dashboard");
 }
 
-// Server action to handle onboarding form submission and set up user profile and default availability
 export async function onBoardingAction(
   prevState: any,
   formData: FormData
@@ -249,9 +248,22 @@ export async function createMeetingAction(formData: FormData) {
   const eventDate = formData.get("eventDate") as string;
 
   const startDateTime = new Date(`${eventDate}T${formTime}:00`);
-
-  // Calculate the end time by adding the meeting length (in minutes) to the start time
   const endDateTime = new Date(startDateTime.getTime() + meetingLength * 60000);
+
+  // Check for existing events in the same time slot
+  const existingEvents = await nylas.events.list({
+    identifier: getUserData.grantId as string,
+    queryParams: {
+      calendarId: getUserData.grantEmail as string,
+      start: Math.floor(startDateTime.getTime() / 1000).toString(),
+      end: Math.floor(endDateTime.getTime() / 1000).toString(),
+    },
+  });
+
+  // If there are existing events in this time slot, throw an error
+  if (existingEvents.data.length > 0) {
+    throw new Error("An event already exists at this time slot");
+  }
 
   await nylas.events.create({
     identifier: getUserData?.grantId as string,

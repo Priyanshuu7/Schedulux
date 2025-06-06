@@ -28,9 +28,9 @@ export default function OnboardingRoute() {
         <div className="h-screen w-screen flex items-center justify-center">
           <Card>
             <CardHeader>
-              <CardTitle>Welcome to Cal
+              <CardTitle>Welcome to Sche
                 <span className="text-primary">
-                Marshal
+                dulux
                 </span></CardTitle>
               <CardDescription> 
                 We need the following information to set up your profile
@@ -43,7 +43,7 @@ export default function OnboardingRoute() {
                   <Label >Full Name</Label> 
                   <Input name= {fields.fullName.name}  defaultValue={fields.fullName.initialValue}
                   key = {fields.fullName.key}
-                    placeholder="Jan marshal"
+                    placeholder="John Dean"
                   />
                 <p className="text-red-500 text-sm">{fields.fullName.errors}</p>
 
@@ -52,7 +52,7 @@ export default function OnboardingRoute() {
                   <Label>Username</Label>
                   <div className="flex rounded-md">
                     <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-muted bg-muted text-muted-foreground text-sm">
-                      CalMarshal.com/
+                    JohnDean.com/
                     </span>
                     <Input name={fields.userName.name}
                     key={fields.userName.key}
