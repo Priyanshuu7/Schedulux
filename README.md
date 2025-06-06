@@ -28,9 +28,9 @@
 | **Prisma** | ORM for PostgreSQL |
 | **Nylas** | Calendar & Email API for scheduling |
 | **Zod + conform-to/zod** | Form validation |
-| **PostgreSQL** | Database |
+| **PostgreSQL (Supabase)** | Database |
 
-## 🧑 Getting Started
+##  Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -49,8 +49,8 @@ yarn install
 
 Create a `.env` file and add:
 ```env
-AUTH_SECRET 
 
+AUTH_SECRET 
 
 AUTH_GITHUB_ID
 AUTH_GITHUB_SECRET
@@ -82,7 +82,7 @@ npm run dev
 ```
 
 
-## 🌐 Deployment
+##  Deployment
 
 This project is ready for **Vercel** deployment.
 
@@ -90,7 +90,7 @@ This project is ready for **Vercel** deployment.
 - Set up PostgreSQL (e.g., Railway, Supabase, Neon)
 - Use Vercel’s automatic CI/CD for seamless updates
 
-## 🙋‍♂️ Author
+##  Author
 
 **Priyanshu Rajak**  
 Made with ❤️ for developers who hate back-and-forth scheduling.
