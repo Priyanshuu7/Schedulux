@@ -36,6 +36,7 @@
 ```bash
 git clone https://github.com/Priyanshuu7/Schedulux
 cd schedulux
+cd nextjs-app
 ```
 
 ### 2. Install dependencies
