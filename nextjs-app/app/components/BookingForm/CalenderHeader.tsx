@@ -12,7 +12,7 @@ export function CalendarHeader({
   calendarProps,
   prevButtonProps,
   nextButtonProps,
-}: { 
+}: {
   state: CalendarState;
   calendarProps: DOMAttributes<FocusableElement>;
   prevButtonProps: AriaButtonProps<"button">;
@@ -24,7 +24,7 @@ export function CalendarHeader({
     timeZone: state.timeZone,
   });
 
-  const [monthName, _, year] = monthDateFormatter
+  const [monthName, year] = monthDateFormatter
     .formatToParts(state.visibleRange.start.toDate(state.timeZone))
     .map((part) => part.value);
 
@@ -41,7 +41,7 @@ export function CalendarHeader({
         </span>
       </h2>
       <div className="flex items-center gap-2">
-        <CalendarButton {...prevButtonProps}> 
+        <CalendarButton {...prevButtonProps}>
           <ChevronLeftIcon className="size-4" />
         </CalendarButton>
         <CalendarButton {...nextButtonProps}>

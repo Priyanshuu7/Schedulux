@@ -4,7 +4,7 @@ import { CreateEventTypeAction } from "@/app/actions";
 import { SubmitButton } from "@/app/components/SubmitButtons";
 import { eventTypeSchema } from "@/app/lib/zodSchemas";
 import { Button } from "@/components/ui/button";
-import { ButtonGroup } from "@/components/ui/ButtonGroup";
+
 import {
   Card,
   CardContent,
@@ -69,12 +69,11 @@ export default function NewEventRoute() {
               />
               <p className="text-red-500 text-sm">{fields.title.errors}</p>
             </div>
-
             <div className="grid gap-y-2 ">
               <Label>URL Slug</Label>
               <div className="flex rounded-md">
                 <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-muted bg-muted text-muted-foreground text-sm">
-                JohnDean.com/
+                  JohnDean.com/
                 </span>
                 <Input
                   type="text"
@@ -88,7 +87,6 @@ export default function NewEventRoute() {
 
               <p className="text-red-500 text-sm">{fields.url.errors}</p>
             </div>
-
             <div className="grid gap-y-2">
               <Label>Description</Label>
               <Textarea
@@ -101,7 +99,6 @@ export default function NewEventRoute() {
                 {fields.description.errors}
               </p>
             </div>
-
             <div className="grid gap-y-2">
               <Label>Duration</Label>
               <Select
@@ -125,7 +122,6 @@ export default function NewEventRoute() {
 
               <p className="text-red-500 text-sm">{fields.duration.errors}</p>
             </div>
-
             <div className="grid gap-y-2">
               <input
                 type="hidden"
@@ -167,8 +163,8 @@ export default function NewEventRoute() {
                   Microsoft Teams
                 </Button>
               </div>
-            </div> <br />
-            
+            </div>{" "}
+            <br />
           </CardContent>
           <CardFooter className="w-full flex justify-between">
             <Button asChild variant="secondary">

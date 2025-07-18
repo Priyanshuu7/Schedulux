@@ -12,11 +12,10 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { nylas } from "./lib/nylas";
 
-
 // Server action to create a new event type for the current user
 export async function CreateEventTypeAction(
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ) {
   const session = await requireUser();
 
@@ -57,10 +56,7 @@ export async function CreateEventTypeAction(
   return redirect("/dashboard");
 }
 
-export async function onBoardingAction(
-  prevState: any,
-  formData: FormData
-) {
+export async function onBoardingAction(prevState: any, formData: FormData) {
   const session = await requireUser();
 
   // Validate onboarding form data, including unique username check
@@ -112,10 +108,7 @@ export async function onBoardingAction(
 }
 
 // Server action to update user settings (name and profile image)
-export async function SettingAction(
-  prevState: any,
-  formData: FormData
-) {
+export async function SettingAction(prevState: any, formData: FormData) {
   const session = await requireUser();
 
   // Validate settings form data
@@ -145,7 +138,6 @@ export async function SettingAction(
 
 // Server action to update user's weekly availability
 export async function UpdateAvailabilityActions(formData: FormData) {
-  const session = await requireUser();
   const rawData = Object.fromEntries(formData.entries());
 
   // Parse availability data from form
@@ -172,8 +164,8 @@ export async function UpdateAvailabilityActions(formData: FormData) {
             fromTime: item.fromTime,
             tillTime: item.tillTime,
           },
-        })
-      )
+        }),
+      ),
     );
     // Revalidate the availability page cache
     revalidatePath("/dashboard/availability");
@@ -190,12 +182,12 @@ export async function updateEventTypeStatusAction(
   }: {
     eventTypeId: string;
     isChecked: boolean;
-  }
+  },
 ) {
   try {
     const session = await requireUser();
 
-    const data = await prisma.eventType.update({
+    await prisma.eventType.update({
       where: {
         id: eventTypeId,
         userId: session.user?.id as string,
@@ -210,7 +202,7 @@ export async function updateEventTypeStatusAction(
       status: "success",
       message: "EventType Status updated successfully",
     };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       message: "Something went wrong",
@@ -312,7 +304,7 @@ export async function cancelMeetingAction(formData: FormData) {
     throw new Error("User not found");
   }
 
-  const data = await nylas.events.destroy({
+  await nylas.events.destroy({
     eventId: formData.get("eventId") as string,
     identifier: userData?.grantId as string,
     queryParams: {
@@ -345,7 +337,7 @@ export async function EditEventTypeAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  const data = await prisma.eventType.update({
+  await prisma.eventType.update({
     where: {
       id: formData.get("id") as string,
       userId: session.user?.id as string,
@@ -364,12 +356,12 @@ export async function EditEventTypeAction(prevState: any, formData: FormData) {
 export async function DeleteEventTypeAction(formData: FormData) {
   const session = await requireUser();
 
-  const data = await prisma.eventType.delete({
+  await prisma.eventType.delete({
     where: {
       id: formData.get("id") as string,
       userId: session.user?.id as string,
     },
   });
-  
+
   return redirect("/dashboard");
 }

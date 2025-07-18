@@ -9,11 +9,11 @@ export function CalendarButton(
   props: AriaButtonProps<"button"> & {
     state?: CalendarState;
     side?: "left" | "right";
-  }
+  },
 ) {
   const ref = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(props, ref);
-  const { focusProps, isFocusVisible } = useFocusRing();
+  const { focusProps } = useFocusRing();
   return (
     <Button
       {...mergeProps(buttonProps, focusProps)}

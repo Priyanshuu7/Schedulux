@@ -44,11 +44,11 @@ async function getData(id: string) {
 
   // Sort eventType array by createdAt descending (since orderBy doesn't work in select)
   const sortedEventTypes = [...(data.eventType || [])].sort(
-    (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+    (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
   );
 
   // Remove createdAt from eventType objects for rendering
-  const eventTypes = sortedEventTypes.map(({ createdAt, ...rest }) => rest);
+  const eventTypes = sortedEventTypes.map(({ ...rest }) => rest);
 
   return { ...data, eventType: eventTypes };
 }

@@ -12,7 +12,7 @@ import React from "react";
 
 const DeleteEventType = ({ params }: { params: { eventTypeid: string } }) => {
   return (
-    <div className="flex-1 flex items-center justify-center">
+    <div className="flex-1 flex  items-center justify-center">
       <Card>
         <CardHeader>
           <CardTitle>Delete Event Type</CardTitle>

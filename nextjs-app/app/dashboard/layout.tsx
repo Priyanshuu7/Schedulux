@@ -1,45 +1,56 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import Image from "next/image";
-// import Logo from "@/public/logo.png";
 import { DasboardLinks } from "../components/DashboardLinks";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { auth,signOut } from "../lib/auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { signOut } from "../lib/auth";
 import requireUser from "../lib/hooks";
 import prisma from "../lib/db";
 import { redirect } from "next/navigation";
 import { Toaster } from "@/components/ui/sonner";
 
+async function getData(userId: string) {
+  const data = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      userName: true,
+      grantId: true,
+    },
+  });
 
-async function getData(userId:string) {
-    const data = await prisma.user.findUnique({
-        where : {
-            id:userId
-        },
-        select:{
-            userName : true,
-            grantId  :  true
-        }
-    })
-
-    if(!data?.userName){
-        return redirect("/onboarding")
-    }
-    if(!data?.grantId){
-        return redirect("/onboarding/grant-id")
-    }
-    return data ;
-    
+  if (!data?.userName) {
+    return redirect("/onboarding");
+  }
+  if (!data?.grantId) {
+    return redirect("/onboarding/grant-id");
+  }
+  return data;
 }
-  
-export default async function DashboardLayout({ children }: { children: ReactNode }) {
 
-const session = await requireUser();
-const data = await getData(session.user?.id as string) 
+export default async function DashboardLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const session = await requireUser();
+  await getData(session.user?.id as string);
   return (
     <>
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -51,7 +62,7 @@ const data = await getData(session.user?.id as string)
               <Link href="/" className="flex items-center gap-2 font-semibold">
                 {/* <Image src={Logo} alt="Logo" className="size-8" /> */}
                 <p className="text-2xl font-bold">
-                Sche<span className="text-primary">dulux</span>
+                  Sche<span className="text-primary">dulux</span>
                 </p>
               </Link>
             </div>
@@ -90,16 +101,21 @@ const data = await getData(session.user?.id as string)
               </SheetContent>
             </Sheet>
             <div className="ml-auto flex items-center gap-x-4">
-                <ThemeToggle/>
-                <DropdownMenu>
+              <ThemeToggle />
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="secondary"
                     size="icon"
                     className="rounded-full cursor-pointer"
                   >
-                    <img src={session?.user?.image as  string} alt="User image" width={20} height={20} className="w-full h-full rounded-full"  />
-                   
+                    <img
+                      src={session?.user?.image as string}
+                      alt="User image"
+                      width={20}
+                      height={20}
+                      className="w-full h-full rounded-full"
+                    />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -121,7 +137,6 @@ const data = await getData(session.user?.id as string)
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-
             </div>
           </header>
           {/* here we rendered the page.tsx */}
@@ -129,8 +144,8 @@ const data = await getData(session.user?.id as string)
             {children}
           </main>
         </div>
-      </div>   
-      <Toaster richColors closeButton/> 
+      </div>
+      <Toaster richColors closeButton />
     </>
   );
 }

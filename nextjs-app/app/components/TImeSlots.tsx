@@ -69,7 +69,7 @@ function calculateAvailableTimeSlots(
   },
   nylasData: NylasResponse<GetFreeBusyResponse[]> | null,
   date: string,
-  duration: number
+  duration: number,
 ) {
   const now = new Date(); // Get the current time
 
@@ -82,12 +82,12 @@ function calculateAvailableTimeSlots(
   const availableFrom = parse(
     `${date} ${dbAvailability.fromTime}`,
     "yyyy-MM-dd HH:mm",
-    new Date()
+    new Date(),
   );
   const availableTill = parse(
     `${date} ${dbAvailability.tillTime}`,
     "yyyy-MM-dd HH:mm",
-    new Date()
+    new Date(),
   );
 
   // Extract busy slots from Nylas data, but only if valid
@@ -99,7 +99,6 @@ function calculateAvailableTimeSlots(
     "timeSlots" in nylasData.data[0] &&
     Array.isArray((nylasData.data[0] as any).timeSlots)
   ) {
-    // @ts-ignore
     busySlots = (nylasData.data[0] as any).timeSlots.map((slot: any) => ({
       start: fromUnixTime(slot.startTime),
       end: fromUnixTime(slot.endTime),
@@ -123,7 +122,7 @@ function calculateAvailableTimeSlots(
         (busy: { start: any; end: any }) =>
           (!isBefore(slot, busy.start) && isBefore(slot, busy.end)) ||
           (isAfter(slotEnd, busy.start) && !isAfter(slotEnd, busy.end)) ||
-          (isBefore(slot, busy.start) && isAfter(slotEnd, busy.end))
+          (isBefore(slot, busy.start) && isAfter(slotEnd, busy.end)),
       )
     );
   });
@@ -139,7 +138,7 @@ export async function TimeSlots({
 }: iappProps) {
   const { data, nylasCalendarData } = await getAvailability(
     selectedDate,
-    userName
+    userName,
   );
 
   const dbAvailability = { fromTime: data?.fromTime, tillTime: data?.tillTime };
@@ -150,7 +149,7 @@ export async function TimeSlots({
     dbAvailability,
     nylasCalendarData,
     formattedDate,
-    meetingDuration
+    meetingDuration,
   );
 
   return (

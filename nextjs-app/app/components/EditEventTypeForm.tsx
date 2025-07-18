@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 
-import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { eventTypeSchema } from "@/app/lib/zodSchemas";
@@ -28,7 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ButtonGroup } from "@/components/ui/ButtonGroup";
+
 import { useActionState, useState } from "react";
 import { SubmitButton } from "./SubmitButtons";
 
@@ -66,7 +65,7 @@ export function EditEventTypeForm({
     shouldRevalidate: "onInput",
   });
   const [activePlatform, setActivePlatform] = useState<Platform>(
-    callProvider as Platform
+    callProvider as Platform,
   );
 
   const togglePlatform = (platform: Platform) => {
@@ -94,7 +93,6 @@ export function EditEventTypeForm({
               />
               <p className="text-red-500 text-sm">{fields.title.errors}</p>
             </div>
-
             <div className="grid gap-y-2 ">
               <Label>Url</Label>
               <div className="flex rounded-md">
@@ -113,7 +111,6 @@ export function EditEventTypeForm({
 
               <p className="text-red-500 text-sm">{fields.url.errors}</p>
             </div>
-
             <div className="grid gap-y-2">
               <Label>Description</Label>
               <Textarea
@@ -126,7 +123,6 @@ export function EditEventTypeForm({
                 {fields.description.errors}
               </p>
             </div>
-
             <div className="grid gap-y-2">
               <Label>Duration</Label>
               <Select
@@ -150,7 +146,6 @@ export function EditEventTypeForm({
 
               <p className="text-red-500 text-sm">{fields.duration.errors}</p>
             </div>
-
             <div className="grid gap-y-2">
               <input
                 type="hidden"
@@ -192,8 +187,8 @@ export function EditEventTypeForm({
                   Microsoft Teams
                 </Button>
               </div>
-            </div> <br />
-            
+            </div>{" "}
+            <br />
           </CardContent>
           <CardFooter className="w-full flex justify-between">
             <Button asChild variant="secondary">

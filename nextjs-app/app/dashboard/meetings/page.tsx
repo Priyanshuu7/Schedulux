@@ -16,7 +16,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { format, fromUnixTime } from "date-fns";
-import { Icon, Video } from "lucide-react";
+import { Video } from "lucide-react";
 
 import React from "react";
 
@@ -57,7 +57,11 @@ function getConferencingUrl(conferencing: any): string | undefined {
     return conferencing.details.url;
   }
   // Sometimes, autocreate may have a url (rare)
-  if (conferencing && "autocreate" in conferencing && conferencing.autocreate?.url) {
+  if (
+    conferencing &&
+    "autocreate" in conferencing &&
+    conferencing.autocreate?.url
+  ) {
     return conferencing.autocreate.url;
   }
   // Sometimes, url is at the root
