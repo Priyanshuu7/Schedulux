@@ -56,13 +56,13 @@ const BookingPage = async ({
   params,
   searchParams,
 }: {
-  params: { username: string; eventName: string };
-  searchParams: { date?: string; time?: string };
+  params: Promise<{ username: string; eventUrl: string }>;
+  searchParams: Promise<{ date?: string; time?: string }>;
 }) => {
-  const selectedDate = searchParams.date
-    ? new Date(searchParams.date)
-    : new Date();
-  const eventType = await getData(params.username, params.eventName);
+  const { username, eventUrl } = await params;
+  const { date, time } = await searchParams;
+  const selectedDate = date ? new Date(date) : new Date();
+  const eventType = await getData(username, eventUrl);
 
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -70,7 +70,7 @@ const BookingPage = async ({
     month: "long",
   }).format(selectedDate);
 
-  const showForm = !!searchParams.date && !!searchParams.time;
+  const showForm = !!date && !!time;
 
   return (
     <div className="min-h-screen w-screen flex items-center justify-center p-4">
@@ -127,9 +127,9 @@ const BookingPage = async ({
               action={createMeetingAction}
             >
               <input type="hidden" name="eventTypeId" value={eventType.id} />
-              <input type="hidden" name="username" value={params.username} />
-              <input type="hidden" name="fromTime" value={searchParams.time} />
-              <input type="hidden" name="eventDate" value={searchParams.date} />
+              <input type="hidden" name="username" value={username} />
+              <input type="hidden" name="fromTime" value={time} />
+              <input type="hidden" name="eventDate" value={date} />
               <input
                 type="hidden"
                 name="meetingLength"
@@ -211,7 +211,7 @@ const BookingPage = async ({
             <div className="overflow-y-auto max-h-[400px]">
               <TimeSlots
                 selectedDate={selectedDate}
-                userName={params.username}
+                userName={username}
                 meetingDuration={eventType.duration}
               />
             </div>

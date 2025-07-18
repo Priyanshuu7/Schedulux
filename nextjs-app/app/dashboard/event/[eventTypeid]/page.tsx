@@ -1,4 +1,3 @@
-
 import { EditEventTypeForm } from "@/app/components/EditEventTypeForm";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
@@ -28,9 +27,10 @@ async function getData(eventTypeid: string) {
 const EditEventTypePage = async ({
   params,
 }: {
-  params: { eventTypeid: string };
+  params: Promise<{ eventTypeid: string }>;
 }) => {
-  const data = await getData(params.eventTypeid);
+  const { eventTypeid } = await params;
+  const data = await getData(eventTypeid);
 
   return (
     <EditEventTypeForm
