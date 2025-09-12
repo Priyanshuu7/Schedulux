@@ -94,7 +94,7 @@ This project is ready for **Vercel** deployment.
 ##  Author
 
 **Priyanshu Rajak**  
-Made with ❤️ for developers who hate back-and-forth scheduling.
+Made for developers who hate back-and-forth scheduling.
 
 - [Twitter](https://twitter.com/yourhandle)
 - [LinkedIn](https://www.linkedin.com/in/priyanshurajak/)
